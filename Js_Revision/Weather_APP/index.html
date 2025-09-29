@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'poppins': ['Poppins', 'sans-serif'],
+                    },
+                    backgroundImage: {
+                        'gradient-weather': 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="font-poppins bg-gradient-weather min-h-screen">
+    <div class="max-w-6xl mx-auto px-5 py-5 min-h-screen flex flex-col">
+        <!-- Header -->
+        <header class="text-center mb-8">
+            <h1 class="text-white text-4xl md:text-5xl font-bold drop-shadow-lg mb-2">
+                <i class="fas fa-cloud-sun text-yellow-400 mr-4"></i>
+                Weather App
+            </h1>
+        </header>
+
+        <!-- Search Section -->
+        <section class="mb-8">
+            <div class="flex gap-3 max-w-2xl mx-auto bg-white/10 backdrop-blur-md p-4 rounded-3xl border border-white/20">
+                <input type="text" placeholder="Enter city name..." 
+                       class="flex-1 px-5 py-4 border-0 rounded-2xl bg-white/90 text-gray-800 placeholder-gray-500 focus:bg-white focus:outline-none focus:ring-2 focus:ring-yellow-400 transition-all duration-300" id="input">
+                <button class="w-12 h-12 bg-gradient-to-r from-red-400 to-pink-400 text-white rounded-full hover:from-red-500 hover:to-pink-500 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg flex items-center justify-center" id="Search">
+                    <i class="fas fa-search"></i>
+                </button>
+               
+            </div>
+        </section>
+
+        <!-- Weather Display -->
+        <main class="bg-white/10 backdrop-blur-md rounded-3xl p-8 border border-white/20 shadow-2xl flex-1 invisible">
+            <!-- Current Weather -->
+            <section class="mb-10" id="CurrentWeather">
+                <div class="flex flex-col md:flex-row items-center gap-8 mb-8">
+                    <div class="text-6xl text-yellow-400 drop-shadow-lg">
+                        <i class="fas fa-sun"></i>
+                    </div>
+                    <div class="text-white text-center md:text-left">
+                        <h2 class="text-4xl md:text-5xl font-semibold mb-2 drop-shadow-lg" id="location">London</h2>
+                        <p class="text-lg opacity-90 mb-4" id="day">Monday, December 16, 2024</p>
+                        <div class="flex items-baseline justify-center md:justify-start mb-2">
+                            <span class="text-6xl md:text-7xl font-bold drop-shadow-lg">22</span>
+                            <span class="text-3xl opacity-80 ml-2">°C</span>
+                        </div>
+                        <p class="text-xl opacity-90 capitalize">Clear Sky</p>
+                    </div>
+                </div>
+                
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                    <div class="bg-white/10 p-5 rounded-2xl text-center border border-white/20 hover:bg-white/15 transition-all duration-300 hover:-translate-y-1">
+                        <i class="fas fa-eye text-2xl text-yellow-400 mb-3 block"></i>
+                        <div class="text-white/80 text-sm mb-1">Visibility</div>
+                        <div class="text-white text-xl font-semibold">10 km</div>
+                    </div>
+                    <div class="bg-white/10 p-5 rounded-2xl text-center border border-white/20 hover:bg-white/15 transition-all duration-300 hover:-translate-y-1">
+                        <i class="fas fa-tint text-2xl text-yellow-400 mb-3 block"></i>
+                        <div class="text-white/80 text-sm mb-1">Humidity</div>
+                        <div class="text-white text-xl font-semibold">65%</div>
+                    </div>
+                    <div class="bg-white/10 p-5 rounded-2xl text-center border border-white/20 hover:bg-white/15 transition-all duration-300 hover:-translate-y-1">
+                        <i class="fas fa-wind text-2xl text-yellow-400 mb-3 block"></i>
+                        <div class="text-white/80 text-sm mb-1">Wind Speed</div>
+                        <div class="text-white text-xl font-semibold">12 km/h</div>
+                    </div>
+                    <div class="bg-white/10 p-5 rounded-2xl text-center border border-white/20 hover:bg-white/15 transition-all duration-300 hover:-translate-y-1">
+                        <i class="fas fa-thermometer-half text-2xl text-yellow-400 mb-3 block"></i>
+                        <div class="text-white/80 text-sm mb-1">Feels Like</div>
+                        <div class="text-white text-xl font-semibold">28°C</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 5-Day Forecast -->
+            <section>
+                <h3 class="text-white text-2xl font-semibold mb-6 text-center drop-shadow-lg">5-Day Forecast</h3>
+                <div class="grid grid-cols-2 md:grid-cols-5 gap-4" id="fiveDay">
+                  
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="text-center text-white/80 py-6 mt-8">
+            <p>&copy; 2024 Weather App. Made with <i class="fas fa-heart text-red-400 mx-1"></i> for weather enthusiasts.</p>
+        </footer>
+    </div>
+</body>
+<script src="script.js"></script>
+</html>
